@@ -1,0 +1,76 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  body{margin:0;background:#20242a;font:12px system-ui,sans-serif;color:#dfe6ee}
+  #out{display:block;margin:8px}
+</style></head><body>
+<canvas id="out"></canvas>
+<pre id="err" style="color:#ff9b9b;padding:8px"></pre>
+<script type="module">
+window.__ERRORS__ = [];
+window.addEventListener('error', (e) => { window.__ERRORS__.push(String(e.message)); document.getElementById('err').textContent = window.__ERRORS__.join('\n'); });
+window.addEventListener('unhandledrejection', (e) => { window.__ERRORS__.push('rej: ' + (e.reason && e.reason.message || e.reason)); document.getElementById('err').textContent = window.__ERRORS__.join('\n'); });
+try {
+  const THREE = await import('/node_modules/three/build/three.module.js');
+  const { GLTFLoader } = await import('/node_modules/three/examples/jsm/loaders/GLTFLoader.js');
+  const params = new URLSearchParams(location.search);
+  const list = JSON.parse(params.get('models') || '[]');
+  const CW = 320, CH = 190, COLS = 4, PAD = 6, CAP = 22;
+  const sheet = document.getElementById('out');
+  sheet.width = COLS * CW + (COLS + 1) * PAD;
+  sheet.height = Math.ceil(list.length / COLS) * (CH + CAP + PAD) + PAD;
+  const ctx = sheet.getContext('2d');
+  ctx.fillStyle = '#20242a'; ctx.fillRect(0, 0, sheet.width, sheet.height);
+  const canvas = document.createElement('canvas');
+  canvas.width = CW; canvas.height = CH;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+  renderer.setSize(CW, CH, false);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  const cam = new THREE.PerspectiveCamera(32, CW / CH, 0.05, 800);
+  const loader = new GLTFLoader();
+  for (let i = 0; i < list.length; i++) {
+    const entry = list[i];
+    const x = PAD + (i % COLS) * (CW + PAD);
+    const y = PAD + Math.floor(i / COLS) * (CH + CAP + PAD);
+    ctx.fillStyle = '#2b313a'; ctx.fillRect(x, y, CW, CH + CAP);
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x2b313a);
+    const key = new THREE.DirectionalLight(0xffffff, 2.6); key.position.set(3, 6, 4); scene.add(key);
+    const fill = new THREE.DirectionalLight(0xbcd6ff, 1.1); fill.position.set(-4, 3, -3); scene.add(fill);
+    scene.add(new THREE.HemisphereLight(0xbcd6ff, 0x2a2622, 1.0));
+    const floor = new THREE.Mesh(new THREE.CircleGeometry(60, 32), new THREE.MeshStandardMaterial({ color: 0x353b45, roughness: 0.92 }));
+    floor.rotation.x = -Math.PI / 2; scene.add(floor);
+    let label = entry.label, tris = 0, len = 0;
+    try {
+      const g = await loader.loadAsync(entry.file);
+      const o = g.scene;
+      const box = new THREE.Box3().setFromObject(o);
+      const size = box.getSize(new THREE.Vector3());
+      const c = box.getCenter(new THREE.Vector3());
+      o.position.set(-c.x, -box.min.y, -c.z);
+      scene.add(o);
+      const rad = Math.max(size.x, size.y, size.z) * 0.6;
+      cam.position.set(rad * 1.9, size.y * 0.75 + rad * 1.1, rad * 1.9);
+      cam.lookAt(0, size.y * 0.45, 0);
+      o.traverse((m) => { if (m.isMesh && m.geometry) { const gg = m.geometry; tris += (gg.index ? gg.index.count : gg.attributes.position.count) / 3; } });
+      len = Math.max(size.x, size.z);
+      renderer.render(scene, cam);
+      ctx.drawImage(canvas, x, y);
+    } catch (e) {
+      label += ' LOAD ERROR';
+      ctx.drawImage(canvas, x, y);
+      window.__ERRORS__.push(entry.file + ': ' + e.message);
+      document.getElementById('err').textContent = window.__ERRORS__.join('\n');
+    }
+    ctx.fillStyle = '#dfe6ee';
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.fillText(`${label} — ${Math.round(tris).toLocaleString()} tris, ${len.toFixed(2)}m`, x + 4, y + CH + 15);
+  }
+  window.__SHEET_DONE__ = true;
+} catch (e) {
+  window.__ERRORS__.push('boot: ' + e.message);
+  document.getElementById('err').textContent = window.__ERRORS__.join('\n');
+  window.__SHEET_DONE__ = true;
+}
+</script></body></html>

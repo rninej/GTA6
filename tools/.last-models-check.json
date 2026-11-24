@@ -1,0 +1,140 @@
+{
+ "summary": {
+  "assetsLoaded": 2,
+  "assetsAttempted": 2,
+  "modelErrors": 0,
+  "carFallbacks": 0,
+  "humanFallbacks": 0,
+  "vehiclesWithGlb": 48,
+  "vehiclesTotal": 48,
+  "playerHasGlb": true,
+  "pedsWithGlb": 25,
+  "peds": 25,
+  "clips": 4,
+  "bones": 40,
+  "boneMoved": true,
+  "clipWhileWalking": "walk",
+  "wheelSpun": true,
+  "wheelSteered": true,
+  "wheelSpin0": 5.7607,
+  "wheelSpin1": 14.4971,
+  "steerSeen": 0.6042,
+  "pivotSteer": 0.6042,
+  "turnedRight": true,
+  "strafeRight": true,
+  "tris": 17753860,
+  "calls": 337,
+  "fatal": 0,
+  "badRequests": 0,
+  "modelRequests": 0,
+  "passed": true
+ },
+ "models": {
+  "attempted": 2,
+  "loaded": 2,
+  "errors": [],
+  "cars": 1,
+  "humans": 1,
+  "props": 0,
+  "carFallbacks": 0,
+  "humanFallbacks": 0,
+  "manifestCars": 1,
+  "manifestHumans": 1
+ },
+ "entity": {
+  "playerHasGlb": true,
+  "playerClips": [
+   "Idle",
+   "Run",
+   "TPose",
+   "Walk"
+  ],
+  "vehiclesWithGlb": 48,
+  "vehiclesTotal": 48,
+  "peds": 25,
+  "pedsWithGlb": 25,
+  "bones": 40,
+  "tris": 17753860,
+  "calls": 337
+ },
+ "bone0": {
+  "name": "mixamorigHips",
+  "x": -189.1446,
+  "y": 402.8207,
+  "z": -9.7668,
+  "clip": "idle",
+  "time": 0.192
+ },
+ "bone1": {
+  "name": "mixamorigHips",
+  "x": -165.6731,
+  "y": 396.288,
+  "z": 2.6431,
+  "clip": "walk",
+  "time": 0.608
+ },
+ "spin0": {
+  "id": 32,
+  "spin": 5.7607,
+  "speed": 5.84,
+  "wheels": 4
+ },
+ "spin1": {
+  "spin": 14.4971,
+  "speed": 8.75
+ },
+ "steerHit": {
+  "id": 1,
+  "steerAngle": 0.6042,
+  "pivot": 0.6042,
+  "inputSteer": 1
+ },
+ "facade": {
+  "bigMeshes": 88,
+  "tris": 17753860
+ },
+ "logs": [
+  {
+   "level": 2,
+   "text": "[.WebGL-0x7d4001e7600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "[.WebGL-0x7d4001e7600]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost"
+  },
+  {
+   "level": 1,
+   "text": "THREE.WebGLRenderer: Context Lost."
+  },
+  {
+   "level": 1,
+   "text": "THREE.WebGLRenderer: Context Restored."
+  },
+  {
+   "level": 2,
+   "text": "[.WebGL-0x7d4001eca00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "WebGL: CONTEXT_LOST_WEBGL: loseContext: context lost"
+  },
+  {
+   "level": 1,
+   "text": "THREE.WebGLRenderer: Context Lost."
+  }
+ ],
+ "requests": [
+  {
+   "url": "file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/index.html",
+   "status": 200
+  },
+  {
+   "url": "file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/assets/app.js",
+   "status": 200
+  }
+ ]
+}

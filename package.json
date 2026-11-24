@@ -1,0 +1,23 @@
+{
+  "name": "palma-city",
+  "productName": "Palma City",
+  "version": "1.0.0",
+  "description": "Palma City - an open-world third-person crime action game for Windows on ARM",
+  "type": "module",
+  "main": "electron/main.cjs",
+  "author": "Palma City Studio",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "package:arm64": "npm run build && electron-packager . \"Palma City\" --platform=win32 --arch=arm64 --out=release --overwrite --asar --prune=true --ignore=\"^/(src|release|\\.git)(/|$)\" --ignore=\"^/(screenshots)(/|$)\" --electron-version=45.4.1 --app-version=1.0.0 --build-version=1.0.0",
+    "package:x64": "npm run build && electron-packager . \"Palma City\" --platform=win32 --arch=x64 --out=release --overwrite --asar --prune=true --ignore=\"^/(src|release|\\.git)(/|$)\" --ignore=\"^/(screenshots)(/|$)\" --electron-version=45.4.1 --app-version=1.0.0 --build-version=1.0.0",
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.3.0",
+    "electron": "^45.4.1",
+    "three": "^0.187.0",
+    "vite": "^8.3.8"
+  }
+}

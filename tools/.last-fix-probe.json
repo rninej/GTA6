@@ -1,0 +1,27 @@
+{
+ "heights": {
+  "__err": "Script failed to execute, this normally means an error was thrown. Check the renderer console for the error."
+ },
+ "variants": {
+  "__err": "cars:Cannot read properties of undefined (reading 'all')"
+ },
+ "enter": {
+  "__err": "Script failed to execute, this normally means an error was thrown. Check the renderer console for the error."
+ },
+ "after": {
+  "__err": "Script failed to execute, this normally means an error was thrown. Check the renderer console for the error."
+ },
+ "directEnter": {
+  "__err": "Script failed to execute, this normally means an error was thrown. Check the renderer console for the error."
+ },
+ "fatal": [
+  "TypeError: t.scale.setScalar is not a function\n    at file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/assets/app.js:4298:21447\n    at Array.forEac",
+  "Uncaught TypeError: Cannot read properties of undefined (reading 'pos')"
+ ],
+ "pageErrors": [
+  "Uncaught TypeError: Cannot read properties of undefined (reading 'pos')",
+  "Uncaught TypeError: Cannot read properties of undefined (reading 'all')",
+  "Uncaught TypeError: Cannot read properties of undefined (reading 'inVehicle')",
+  "Uncaught TypeError: Cannot read properties of undefined (reading 'inVehicle')"
+ ]
+}

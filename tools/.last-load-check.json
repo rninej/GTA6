@@ -1,0 +1,73 @@
+{
+ "summary": {
+  "loaded": 45,
+  "attempted": 45,
+  "errors": 0,
+  "carFallbacks": 0,
+  "humanFallbacks": 0,
+  "vehiclesWithGlb": 37,
+  "vehiclesTotal": 37,
+  "busHasGlb": true,
+  "playerHasGlb": true,
+  "pedsWithGlb": 24,
+  "peds": 24,
+  "wheels": 0,
+  "props": 12,
+  "fixtures": 1,
+  "landmarks": 0,
+  "carEntries": 14,
+  "bedMeshes": 1,
+  "bedTris": 4712,
+  "ferrisMeshes": 0,
+  "ferrisTris": 1152,
+  "ferrisModel": false,
+  "weapons": 4,
+  "pickups": 3,
+  "playerWeapon": "pistol",
+  "playerGunKey": "pistol",
+  "playerGunShared": true,
+  "playerGunTris": 1394,
+  "weaponTris": [
+   1394,
+   1374,
+   746,
+   1388
+  ],
+  "pickupCount": 15,
+  "pickupSingleMeshes": 15,
+  "pickupTris": [
+   754,
+   288,
+   1348
+  ],
+  "rifleKey": "rifle",
+  "rifleShared": true,
+  "pistolRestored": true,
+  "smallPropTris": 97736,
+  "busMeshes": 1,
+  "smallProps": 260,
+  "smallPropMesh": true,
+  "boats": 3,
+  "pierDeck": true,
+  "lamps": 360,
+  "propModels": 1655,
+  "propKinds": "lantern+bench+bin+hydrant+planter+mailbox+bollard+tree+pine+boat+dumpster+cone",
+  "tris": 4632650,
+  "calls": 94,
+  "fatal": 0,
+  "badRequests": 0,
+  "ready": true,
+  "passed": true
+ },
+ "logs": [],
+ "reqs": [
+  {
+   "url": "file:///tmp/Palma%20City%20Test/index.html",
+   "status": 200
+  },
+  {
+   "url": "file:///tmp/Palma%20City%20Test/assets/app.js",
+   "status": 200
+  }
+ ]
+}

@@ -1,0 +1,368 @@
+{
+  "version": 3,
+  "cars": [
+    {
+      "id": "ferrari",
+      "file": "ferrari.glb",
+      "length": 4.55,
+      "bodyMaterial": "main",
+      "wheels": {
+        "fl": "wheel_fl",
+        "fr": "wheel_fr",
+        "rl": "wheel_rl",
+        "rr": "wheel_rr"
+      },
+      "steeringWheel": "steering_wheel"
+    },
+    {
+      "id": "spectral",
+      "file": "Spectral.glb",
+      "length": 4.7,
+      "wheelPrefixes": {
+        "fl": "Front_Left",
+        "fr": "Front_Right",
+        "rl": "Rear_Left",
+        "rr": "Rear_Right"
+      },
+      "merge": true
+    },
+    {
+      "id": "police",
+      "file": "police.glb",
+      "length": 4.95,
+      "flat": true,
+      "merge": true,
+      "wheelPrefixes": {
+        "fl": "Cop_FrontLeftWheel",
+        "fr": "Cop_FrontRightWheel",
+        "rl": "Cop_BackWheels"
+      }
+    },
+    {
+      "id": "sedan",
+      "file": "sedan.glb",
+      "length": 4.8,
+      "flat": true,
+      "merge": true,
+      "bodyMaterial": "Blue",
+      "wheelPrefixes": {
+        "fl": "NormalCar1_FrontLeftWheel",
+        "fr": "NormalCar1_FrontRightWheel",
+        "rl": "NormalCar1_BackWheels"
+      }
+    },
+    {
+      "id": "sports",
+      "file": "sports.glb",
+      "length": 4.55,
+      "flat": true,
+      "merge": true,
+      "bodyMaterial": "Orange",
+      "wheelPrefixes": {
+        "fl": "SportsCar_FrontLeftWheel",
+        "fr": "SportsCar_FrontRightWheel",
+        "rl": "SportsCar_BackWheels"
+      }
+    },
+    {
+      "id": "sports2",
+      "file": "sports2.glb",
+      "length": 4.55,
+      "flat": true,
+      "merge": true,
+      "bodyMaterial": "White",
+      "wheelPrefixes": {
+        "fl": "SportsCar2_FrontLeftWheel",
+        "fr": "SportsCar2_FrontRightWheel",
+        "rl": "SportsCar2_BackWheels"
+      }
+    },
+    {
+      "id": "suv",
+      "file": "suv.glb",
+      "length": 5.1,
+      "flat": true,
+      "merge": true,
+      "bodyMaterial": "White",
+      "wheelPrefixes": {
+        "fl": "SUV_FrontLeftWheel",
+        "fr": "SUV_FrontRightWheel",
+        "rl": "SUV_BackWheels"
+      }
+    },
+    {
+      "id": "taxi",
+      "file": "taxi.glb",
+      "length": 4.75,
+      "flat": true,
+      "merge": true,
+      "wheelPrefixes": {
+        "fl": "Taxi_FrontLeftWheel",
+        "fr": "Taxi_FrontRightWheel",
+        "rl": "Taxi_BackWheels"
+      }
+    },
+    {
+      "id": "pickup",
+      "file": "pickup.glb",
+      "length": 5.4,
+      "merge": true,
+      "wheelPrefixes": {
+        "fl": "FrontWheel_L",
+        "fr": "FrontWheel_R",
+        "rl": "BackWheels"
+      }
+    },
+    {
+      "id": "van",
+      "file": "van.glb",
+      "length": 5.2,
+      "merge": true,
+      "wheelPrefixes": {
+        "fl": "FrontWheel_L",
+        "fr": "FrontWheel_R",
+        "rl": "BackWheels"
+      }
+    },
+    {
+      "id": "bus",
+      "file": "bus.glb",
+      "length": 7.2,
+      "flat": true,
+      "merge": true,
+      "bodyMaterial": "Kit terracotta",
+      "flatPaint": true
+    },
+    {
+      "id": "coupe",
+      "file": "coupe.glb",
+      "length": 4.5,
+      "flat": true,
+      "merge": true
+    },
+    {
+      "id": "hatch",
+      "file": "hatch.glb",
+      "length": 4.1,
+      "flat": true,
+      "merge": true
+    },
+    {
+      "id": "muscle",
+      "file": "muscle.glb",
+      "length": 4.8,
+      "flat": true,
+      "merge": true
+    }
+  ],
+  "humans": [
+    {
+      "id": "soldier",
+      "file": "Soldier.glb",
+      "height": 1.82,
+      "clips": {
+        "idle": "Idle",
+        "walk": "Walk",
+        "run": "Run"
+      }
+    },
+    {
+      "id": "xbot",
+      "file": "Xbot.glb",
+      "height": 1.8,
+      "clips": {
+        "idle": "idle",
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "businessman",
+      "file": "businessman.glb",
+      "height": 1.8,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "chefwoman",
+      "file": "chef-woman.glb",
+      "height": 1.7,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "elderlyman",
+      "file": "elderly-man.glb",
+      "height": 1.76,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "athlete",
+      "file": "female-athlete.glb",
+      "height": 1.72,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "doctor",
+      "file": "doctor.glb",
+      "height": 1.78,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "constructionworker",
+      "file": "construction-worker.glb",
+      "height": 1.8,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "hoodieteen",
+      "file": "hoodie-teen.glb",
+      "height": 1.75,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    },
+    {
+      "id": "farmerwoman",
+      "file": "farmer-woman.glb",
+      "height": 1.68,
+      "clips": {
+        "walk": "walk",
+        "run": "run"
+      }
+    }
+  ],
+  "props": [
+    {
+      "id": "lantern",
+      "file": "Lantern.glb",
+      "height": 4.4
+    },
+    {
+      "id": "bench",
+      "file": "Bench.glb",
+      "height": 0.92
+    },
+    {
+      "id": "bin",
+      "file": "TrashCan.glb",
+      "height": 1.05
+    },
+    {
+      "id": "hydrant",
+      "file": "Hydrant.glb",
+      "height": 0.85
+    },
+    {
+      "id": "planter",
+      "file": "Planter.glb",
+      "height": 0.85
+    },
+    {
+      "id": "mailbox",
+      "file": "Mailbox.glb",
+      "height": 1.45
+    },
+    {
+      "id": "bollard",
+      "file": "Bollard.glb",
+      "height": 1
+    },
+    {
+      "id": "tree",
+      "file": "Tree.glb",
+      "height": 5.2
+    },
+    {
+      "id": "pine",
+      "file": "PineTree.glb",
+      "height": 6.4
+    },
+    {
+      "id": "boat",
+      "file": "boat.glb",
+      "height": 1.6
+    },
+    {
+      "id": "dumpster",
+      "file": "dumpster.glb",
+      "height": 1.3
+    },
+    {
+      "id": "cone",
+      "file": "cone.glb",
+      "height": 0.65
+    }
+  ],
+  "helicopters": [
+    {
+      "id": "police-heli",
+      "file": "heli.glb",
+      "length": 9,
+      "flat": true
+    }
+  ],
+  "weapons": [
+    {
+      "id": "pistol",
+      "file": "pistol.glb",
+      "length": 0.26
+    },
+    {
+      "id": "smg",
+      "file": "smg.glb",
+      "length": 0.38
+    },
+    {
+      "id": "shotgun",
+      "file": "shotgun.glb",
+      "length": 0.58
+    },
+    {
+      "id": "rifle",
+      "file": "rifle.glb",
+      "length": 0.62
+    }
+  ],
+  "pickups": [
+    {
+      "id": "health",
+      "file": "health.glb",
+      "height": 0.48
+    },
+    {
+      "id": "armor",
+      "file": "armor.glb",
+      "height": 0.55
+    },
+    {
+      "id": "ammo",
+      "file": "ammo.glb",
+      "height": 0.42
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "bed",
+      "file": "bed.glb",
+      "height": 1.1
+    }
+  ]
+}

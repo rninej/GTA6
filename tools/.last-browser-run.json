@@ -1,0 +1,95 @@
+{
+ "url": "file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/index.html",
+ "clicked": true,
+ "keyMode": "native",
+ "held": {
+  "keys": [
+   "KeyW"
+  ],
+  "down": true
+ },
+ "wall": null,
+ "look": {
+  "mode": "dom",
+  "before": 3.141592653589793,
+  "after": 2.8335926535897933,
+  "turnedRight": true
+ },
+ "strafe": {
+  "dist": 0.97,
+  "strafeRight": true
+ },
+ "loop": {
+  "ok": true,
+  "frames": 0.2
+ },
+ "walk": {
+  "ok": true,
+  "frames": 0.25
+ },
+ "state": {
+  "ready": true,
+  "started": true,
+  "paused": false,
+  "loading": false,
+  "locked": true,
+  "tris": 8225740,
+  "calls": 227,
+  "canvas": [
+   640,
+   360
+  ],
+  "pos": [
+   -188,
+   0,
+   -14
+  ],
+  "hudVisible": true
+ },
+ "before": [
+  -188,
+  0,
+  -14
+ ],
+ "after": [
+  -188,
+  -15.53
+ ],
+ "moved": 1.53,
+ "badGeo": [],
+ "fatalCount": 0,
+ "requestCount": 2,
+ "requests": [
+  {
+   "url": "file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/index.html",
+   "status": 200,
+   "type": "mainFrame"
+  },
+  {
+   "url": "file:///workspace/chats/965781468d5bfeab2f9b32e3/dist-browser/assets/app.js",
+   "status": 200,
+   "type": "script"
+  }
+ ],
+ "assetRequests": 0,
+ "badRequests": [],
+ "passed": true,
+ "logs": [
+  {
+   "level": 2,
+   "text": "[.WebGL-0x16c001b6a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "[.WebGL-0x16c001b6a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "[.WebGL-0x16c001b6a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels"
+  },
+  {
+   "level": 2,
+   "text": "[.WebGL-0x16c001b6a00]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)"
+  }
+ ]
+}

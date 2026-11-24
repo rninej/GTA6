@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="icon" href="data:,">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Palma City</title>
+  <script defer src="./assets/app.js"></script>
+</head>
+<body>
+<div id="game-root">
+  <canvas id="game"></canvas>
+
+  <!-- ======================= HUD ======================= -->
+  <div id="hud" class="hidden">
+    <div id="minimap-wrap">
+      <div id="minimap-top">
+        <span id="district">PALMA BEACH</span>
+        <span id="clock">18:42</span>
+      </div>
+      <canvas id="minimap" width="440" height="440"></canvas>
+      <div id="street">PALM AVENUE</div>
+      <div id="money">$<span id="money-value">0</span></div>
+    </div>
+
+    <div id="vitals">
+      <div id="stars" aria-label="wanted level"></div>
+      <div class="bar health"><i id="health-fill"></i></div>
+      <div class="bar armor"><i id="armor-fill"></i></div>
+    </div>
+
+    <div id="objective">
+      <div id="obj-kicker">MISSION</div>
+      <div id="obj-title">—</div>
+      <div id="obj-text">—</div>
+    </div>
+
+    <div id="weapon">
+      <div id="weapon-name">PISTOL</div>
+      <div id="ammo"><b>12</b><span>/ 60</span></div>
+    </div>
+
+    <div id="speedo">
+      <canvas id="speedo-canvas" width="260" height="260"></canvas>
+      <div id="gear">D</div>
+    </div>
+
+    <div id="crosshair"><span></span><span></span><span></span><span></span><i></i></div>
+    <div id="hitmarker"></div>
+    <div id="reticle"></div>
+
+    <div id="subtitles"></div>
+    <div id="toasts"></div>
+    <div id="banner"><div id="banner-kicker">MISSION PASSED</div><div id="banner-title"></div></div>
+    <div id="radio"><div id="radio-station">NEON NIGHTS FM</div><div id="radio-track">—</div></div>
+    <div id="bus-hud" class="hidden">
+      <div id="bus-line">LINE 1 · HARBOR LOOP</div>
+      <div id="bus-stop">NEXT · CIVIC PLAZA</div>
+      <div id="bus-next">AT · CORAL HEIGHTS · DOORS OPEN</div>
+    </div>
+    <div id="phone" class="hidden">
+      <div class="phone-shell">
+        <div class="phone-head"><span>PALMA PHONE</span><small id="phone-clock">18:42</small></div>
+        <div class="phone-list" id="phone-list"></div>
+        <div class="phone-detail" id="phone-detail"></div>
+        <div class="phone-foot"><span id="phone-money">$0</span><span>&uarr;&darr; SELECT &middot; ENTER CALL &middot; P CLOSE</span></div>
+      </div>
+    </div>
+    <div id="help"></div>
+    <div id="fps" class="hidden">60 FPS</div>
+    <div id="interact" class="hidden"><kbd>F</kbd><span>ENTER VEHICLE</span></div>
+    <div id="damage-flash"></div>
+    <div id="letterbox"><div class="lb-top"></div><div class="lb-bottom"></div></div>
+  </div>
+
+  <!-- ======================= LOADING ======================= -->
+  <div id="loading" class="screen">
+    <div class="load-inner">
+      <div class="logo">
+        <div class="logo-main">PALMA</div>
+        <div class="logo-sub">CITY</div>
+      </div>
+      <div class="load-bar"><i id="load-fill"></i></div>
+      <div id="load-status">INITIALISING ENGINE</div>
+      <div id="load-tip">TIP: Hold SHIFT to sprint, SPACE to handbrake.</div>
+    </div>
+    <div class="load-foot">PALMA COUNTY, FLORIDA · 2026</div>
+  </div>
+
+  <!-- ======================= TITLE ======================= -->
+  <div id="title" class="screen hidden">
+    <div class="title-bg"></div>
+    <div class="title-wrap">
+      <div class="logo big">
+        <div class="logo-main">PALMA</div>
+        <div class="logo-sub">CITY</div>
+      </div>
+      <div class="tagline">TWO LIVES. ONE CITY. NO WAY OUT.</div>
+      <div class="title-menu">
+        <button data-action="continue" id="btn-continue">CONTINUE</button>
+        <button data-action="new">NEW GAME</button>
+        <button data-action="controls">CONTROLS</button>
+        <button data-action="settings">SETTINGS</button>
+        <button data-action="quit">QUIT</button>
+      </div>
+      <div class="title-note">Press <kbd>ENTER</kbd> to start</div>
+    </div>
+  </div>
+
+  <!-- ======================= PAUSE ======================= -->
+  <div id="menu" class="screen hidden">
+    <div class="menu-panel">
+      <div class="menu-head"><span>PAUSED</span><small id="menu-sub">PALMA CITY</small></div>
+      <div class="menu-list" id="menu-main">
+        <button data-action="resume">RESUME</button>
+        <button data-action="save">SAVE GAME</button>
+        <button data-action="load">LOAD GAME</button>
+        <button data-action="settings">SETTINGS</button>
+        <button data-action="controls">CONTROLS</button>
+        <button data-action="quit-title">QUIT TO TITLE</button>
+        <button data-action="quit">QUIT TO DESKTOP</button>
+      </div>
+      <div class="menu-list hidden" id="menu-settings">
+        <div class="setting">
+          <label>GRAPHICS QUALITY</label>
+          <div class="seg" data-setting="quality">
+            <button data-value="low">LOW</button><button data-value="medium">MEDIUM</button>
+            <button data-value="high">HIGH</button><button data-value="ultra">ULTRA</button>
+          </div>
+        </div>
+        <div class="setting">
+          <label>RENDER SCALE <b id="scale-val">100%</b></label>
+          <input type="range" min="60" max="100" step="5" id="scale-range" />
+        </div>
+        <div class="setting">
+          <label>FIELD OF VIEW <b id="fov-val">78</b></label>
+          <input type="range" min="60" max="100" step="1" id="fov-range" />
+        </div>
+        <div class="setting">
+          <label>MOUSE SENSITIVITY <b id="sens-val">1.0</b></label>
+          <input type="range" min="20" max="300" step="5" id="sens-range" />
+        </div>
+        <div class="setting">
+          <label>MASTER VOLUME <b id="vol-val">80%</b></label>
+          <input type="range" min="0" max="100" step="1" id="vol-range" />
+        </div>
+        <div class="setting row">
+          <label>CINEMATIC GRADE</label><button class="toggle" id="blur-toggle">OFF</button>
+        </div>
+        <div class="setting row">
+          <label>SHOW FPS</label><button class="toggle" id="fps-toggle">OFF</button>
+        </div>
+        <button class="back" data-action="back">BACK</button>
+      </div>
+      <div class="menu-list hidden" id="menu-controls">
+        <div class="controls-grid">
+          <div><kbd>W A S D</kbd><span>Move / Drive</span></div>
+          <div><kbd>MOUSE</kbd><span>Look / Aim</span></div>
+          <div><kbd>SHIFT</kbd><span>Sprint</span></div>
+          <div><kbd>SPACE</kbd><span>Jump / Handbrake</span></div>
+          <div><kbd>F</kbd><span>Enter / exit vehicle · lockpick / hotwire · board bus</span></div>
+          <div><kbd>LMB</kbd><span>Fire weapon</span></div>
+          <div><kbd>RMB</kbd><span>Aim down sights</span></div>
+          <div><kbd>R</kbd><span>Reload</span></div>
+          <div><kbd>1 2 3 4</kbd><span>Switch weapon</span></div>
+          <div><kbd>V</kbd><span>Change camera</span></div>
+          <div><kbd>H</kbd><span>Horn / Radio next</span></div>
+          <div><kbd>M</kbd><span>City map</span></div>
+          <div><kbd>P</kbd><span>Phone (contacts, jobs, taxi)</span></div>
+          <div><kbd>X</kbd><span>Rob a shop register</span></div>
+          <div><kbd>B</kbd><span>Buy snacks / sleep at safehouse</span></div>
+          <div><kbd>N</kbd><span>Buy pistol ammo</span></div>
+          <div><kbd>TAB</kbd><span>Objectives</span></div>
+          <div><kbd>ESC</kbd><span>Pause</span></div>
+          <div><kbd>F11</kbd><span>Fullscreen</span></div>
+        </div>
+        <button class="back" data-action="back">BACK</button>
+      </div>
+      <div class="menu-foot">Palma City v1.0 · Snapdragon optimised</div>
+    </div>
+  </div>
+
+  <!-- ======================= MAP ======================= -->
+  <div id="map-screen" class="screen hidden">
+    <div class="map-frame">
+      <canvas id="bigmap" width="1400" height="1400"></canvas>
+      <div class="map-legend">
+        <span><i class="dot player"></i>YOU</span>
+        <span><i class="dot mission"></i>MISSION</span>
+        <span><i class="dot police"></i>POLICE</span>
+        <span><i class="dot safe"></i>SAFEHOUSE</span>
+      </div>
+      <div class="map-hint">PRESS <kbd>M</kbd> TO CLOSE</div>
+    </div>
+  </div>
+
+  <!-- ======================= DEATH / BUSTED ======================= -->
+  <div id="death" class="screen hidden">
+    <div class="death-text" id="death-text">WASTED</div>
+    <div class="death-sub" id="death-sub">Medical bills: $0</div>
+  </div>
+
+  <!-- ======================= MISSION INTRO ======================= -->
+  <div id="chapter" class="screen hidden">
+    <div class="chapter-inner">
+      <div id="chapter-kicker">CHAPTER ONE</div>
+      <div id="chapter-title">SUNBURN</div>
+      <div id="chapter-sub">PALMA BEACH · 04:12</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
